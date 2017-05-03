@@ -80,6 +80,9 @@ workspace $ws8 output $out1
 workspace $ws9 output $out1
 workspace $ws10 output $out2
 
+#Workspace back and forth (press mod + WS again for going into the parent workspace)
+workspace_auto_back_and_forth yes
+
 # Bind App to workspace
 # Check class by : xprop
 assign [class="Google-chrome"] $ws2
@@ -233,7 +236,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Lock screen
-bindsym $mod+l exec i3lock -c 000000
+bindsym $mod+l exec i3lock -f -c 000000
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
@@ -271,10 +274,11 @@ set $power_mode "power"
 bindsym $mod+Shift+q      mode $power_mode
 mode $power_mode {
     bindsym p         exec systemctl poweroff
-    bindsym r         exec systemctl reboot 
-    bindsym l         exec i3lock -c 000000 , mode "default"
+    bindsym r         exec systemctl reboot
+    bindsym s	      exec i3lock -f -c 000000 ; systemctl suspend
+    bindsym l         exec i3lock -f -c 000000 , mode "default"
     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
-   # bindsym h         exec systemctl hibernate 
+    bindsym h         exec i3lock -f -c 000000 ; systemctl hibernate 
    # bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
 
     bindsym Return    mode "default"
@@ -294,6 +298,13 @@ bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.0
 # MISCELLANEOUS
 ###############
 
+#Mouse warping
+mouse_warping none
+#mouse_warping out1|none
+
+#Focus following mouse
+focus_follows_mouse no
+
                         #BORDER    BACKGROUND   TEXT         INDICATOR   CHILD_BORDER
 
 client.unfocused        $black      $black      $m2         $darkblack  $darkblack
@@ -303,8 +314,8 @@ client.background       $black
 
 
 # Startup programs
-exec --no-startup-id mpd  
-exec --no-startup-id dunst 
+exec --no-startup-id dunst
+exec --no-startup-id blueman-applet
 exec_always --no-startup-id feh --bg-scale ~/Immagini/Background/stars_space_glow_planet_99744_1920x1080.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
