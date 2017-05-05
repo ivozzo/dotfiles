@@ -275,10 +275,10 @@ bindsym $mod+Shift+q      mode $power_mode
 mode $power_mode {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot
-    bindsym s	      exec i3lock -f -c 000000 && systemctl suspend
+    bindsym s	      exec i3lock -f -c 000000 , mode "default" , systemctl suspend
     bindsym l         exec i3lock -f -c 000000 , mode "default"
     bindsym q         exec --no-startup-id i3-msg exit, mode "default"
-    bindsym h         exec i3lock -f -c 000000 && systemctl hibernate 
+    bindsym h         exec i3lock -f -c 000000 , mode "default" , systemctl hibernate 
    # bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
 
     bindsym Return    mode "default"
