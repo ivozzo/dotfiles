@@ -323,6 +323,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id autorandr --change
 exec_always --no-startup-id feh --bg-scale ~/Immagini/Background/stars_space_glow_planet_99744_1920x1080.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+#exec --no-startup-id wicd-client --tray
 
 # Miscellaneous
 # i3-gaps
