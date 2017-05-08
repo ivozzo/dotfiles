@@ -293,8 +293,8 @@ mode $power_mode {
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
 
 # screenshot
-bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 ~/Immagini/Screenshots/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 ~/Immagini/Screenshots/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
 #/CUSTOM BIND KEYS
 ##################
@@ -323,6 +323,7 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id autorandr --change
 exec_always --no-startup-id feh --bg-scale ~/Immagini/Background/stars_space_glow_planet_99744_1920x1080.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id owncloud
 #exec --no-startup-id wicd-client --tray
 
 # Miscellaneous
