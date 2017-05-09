@@ -290,7 +290,7 @@ mode $power_mode {
 }
 
 # Change autorandr profile
-bindsym $mod+s exec --no-startup-id "autorandr --change"
+bindsym $mod+x exec --no-startup-id "autorandr --change"
 
 # Rename workspace with i3-input using numbers and text
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
