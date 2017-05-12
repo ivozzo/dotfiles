@@ -95,6 +95,7 @@ assign [class="Code"] $ws5
 assign [class="jetbrains-idea-ce"] $ws5
 assign [class="Pavucontrol"] $ws6
 assign [class="spotify"] $ws6
+assign [class="Gitkraken"] $ws5
 # Assign to certain workspace
 assign [instance="cheese|gimp"] $ws6
 
@@ -327,7 +328,8 @@ exec --no-startup-id autorandr --change
 exec_always --no-startup-id feh --bg-scale ~/Immagini/Background/stars_space_glow_planet_99744_1920x1080.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id owncloud
-exec --no-startup-it franz
+exec --no-startup-id franz
+exec --no-startup-id pasystray
 #exec --no-startup-id wicd-client --tray
 
 # Miscellaneous
