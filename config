@@ -2,8 +2,8 @@
 ###########
 
 # Output 
-set $out1 EDP1
-set $out2 DP1
+set $out1 eDP1
+set $out2 DP1 #HDMI1
 
 # Workspace
 set $ws1 "1: "
@@ -93,8 +93,11 @@ assign [class="skyperforlinux"] $ws3
 assign [class="Franz"] $ws3
 assign [class="Code"] $ws5
 assign [class="jetbrains-idea-ce"] $ws5
+assign [class="Pavucontrol"] $ws6
+assign [class="spotify"] $ws6
+assign [class="Gitkraken"] $ws5
 # Assign to certain workspace
-assign [instance="spotify|cheese|gimp"] $ws6
+assign [instance="cheese|gimp"] $ws6
 
 # Floating windows
 
@@ -262,8 +265,10 @@ set $mode_launcher Launcher
 bindsym $mod+o mode "$mode_launcher"
 
 mode "$mode_launcher" { 
-    bindsym t exec thunar
-    bindsym v exec virtualbox
+    bindsym t exec thunar , mode "default"
+    bindsym v exec virtualbox , mode "default"
+    bindsym s exec spotify , mode "default"
+    bindsym f exec Franz , mode "default"
 
     bindsym Esc mode "default"
     bindsym Return mode "default"
@@ -284,6 +289,9 @@ mode $power_mode {
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
+
+# Change autorandr profile
+bindsym $mod+x exec --no-startup-id "autorandr --change"
 
 # Rename workspace with i3-input using numbers and text
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
@@ -321,6 +329,10 @@ exec_always --no-startup-id autorandr --change
 exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/milky_way_stars_night_sky_space_97654_1920x1080.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id redshift
+exec --no-startup-id owncloud
+exec --no-startup-id franz
+exec --no-startup-id pasystray
+#exec --no-startup-id wicd-client --tray
 
 # Miscellaneous
 # i3-gaps
