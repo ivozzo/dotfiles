@@ -3,7 +3,7 @@
 
 # Output 
 set $out1 EDP1
-set $out2 HDMI1
+set $out2 DP1
 
 # Workspace
 set $ws1 "1: "
@@ -56,7 +56,7 @@ set $terminal termite
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:monospace 8
+font pango:Monospace 10
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -275,10 +275,10 @@ bindsym $mod+Shift+q      mode $power_mode
 mode $power_mode {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot
-    bindsym s	      exec i3lock -f -c 000000 ; systemctl suspend
-    bindsym l         exec i3lock -f -c 000000 , mode "default"
-    bindsym q         exec --no-startup-id i3-msg exit, mode "default"
-    bindsym h         exec i3lock -f -c 000000 ; systemctl hibernate 
+    bindsym s	      mode "default" , exec i3lock -f -c 000000 && systemctl suspend
+    bindsym l         mode "default" , exec i3lock -f -c 000000
+    bindsym q         mode "default" , exec --no-startup-id i3-msg exit
+    bindsym h         mode "default" , exec i3lock -f -c 000000 && systemctl hibernate 
    # bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
 
     bindsym Return    mode "default"
@@ -289,8 +289,8 @@ mode $power_mode {
 bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
 
 # screenshot
-bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/Pictures/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/Immagini/Screenshot/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/Immagini/Screenshot/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
 #/CUSTOM BIND KEYS
 ##################
@@ -314,11 +314,13 @@ client.background       $black
 
 
 # Startup programs
-exec --no-startup-id dunst
+exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
+exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
-exec --no-startup-id autorandr --change
-exec_always --no-startup-id feh --bg-scale ~/Immagini/Background/stars_space_glow_planet_99744_1920x1080.jpg
+exec_always --no-startup-id autorandr --change
+exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/milky_way_stars_night_sky_space_97654_1920x1080.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec --no-startup-id redshift
 
 # Miscellaneous
 # i3-gaps
