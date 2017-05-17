@@ -268,7 +268,7 @@ mode "$mode_launcher" {
     bindsym t exec thunar , mode "default"
     bindsym v exec virtualbox , mode "default"
     bindsym s exec spotify , mode "default"
-    bindsym f exec Franz , mode "default"
+    bindsym f exec franz-bin , mode "default"
 
     bindsym Esc mode "default"
     bindsym Return mode "default"
@@ -330,8 +330,6 @@ exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/milky_way_stars_
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id redshift
 exec --no-startup-id owncloud
-exec --no-startup-id franz
-exec --no-startup-id pasystray
 #exec --no-startup-id wicd-client --tray
 
 # Miscellaneous
