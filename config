@@ -271,7 +271,7 @@ mode "$mode_launcher" {
     bindsym s exec spotify , mode "default"
     bindsym f exec franz-bin , mode "default"
     bindsym g exec Google-chrome, mode "default"
-    bindsym c exec Code , mode "default"
+    bindsym c exec code , mode "default"
 
     bindsym Esc mode "default"
     bindsym Return mode "default"
