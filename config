@@ -96,7 +96,7 @@ type = internal/xbacklight
 
 output = eDP1
 format = <label>
-label = :%percentage%%
+label =  %percentage%%
 
 ; Only applies if <ramp> is used
 ramp-0 = 🌕
@@ -148,8 +148,8 @@ inherit = module/theme
 type = internal/fs
 interval = 20
 mount-0 = /
-label-mounted = ":%free%"
-label-unmounted = ":??"
+label-mounted = " %free%"
+label-unmounted = " ??"
 format-mounted-underline = #39c639
 format-unmounted-underline = #39c639
 
@@ -159,8 +159,8 @@ type = internal/fs
 interval = 20
 format-prefix = ""
 mount-0 = /home
-label-mounted = ":%free%"
-label-unmounted = ":??"
+label-mounted = " %free%"
+label-unmounted = " ??"
 format-mounted-underline = #39c639
 format-unmounted-underline = #39c639
 
@@ -170,8 +170,8 @@ type = internal/fs
 interval = 20
 format-prefix = ""
 mount-0 = /home/alessandro/VM
-label-mounted = ":%free%"
-label-unmounted = ":??"
+label-mounted = " %free%"
+label-unmounted = " ??"
 format-mounted-underline = #39c639
 format-unmounted-underline = #39c639
 
@@ -256,7 +256,7 @@ interface = enp62s0u1u4
 interval = 3.0
 
 format-connected-underline = #55aa55
-format-connected-prefix = ""
+format-connected-prefix = " "
 format-connected-prefix-foreground = ${colors.foreground-alt}
 label-connected = %local_ip%
 
@@ -271,7 +271,7 @@ inherit = module/theme
 format-underline = #999999
 type = internal/cpu
 interval = 2
-format-prefix = ""
+format-prefix = " "
 ;format-underline = #f90000
 label = %percentage%%
 
@@ -280,7 +280,7 @@ inherit = module/theme
 format-underline = #999999
 type = internal/memory
 interval = 2
-format-prefix = ""
+format-prefix = " "
 ;format-underline = #4bffdc
 ;label = %percentage%%
 label = %gb_used%
@@ -320,16 +320,16 @@ type = internal/i3
 format = <label-state> <label-mode>
 name-sort = true
 strip-wsnumbers = true  ;This will split the workspace name on ':'
-ws-icon-0 = 1: 
-ws-icon-1 = 2:  
-ws-icon-2 = 3: 
-ws-icon-3 = 4: 
-ws-icon-4 = 5: 
-ws-icon-5 = 6: 
-ws-icon-6 = 7: 
-ws-icon-7 = 8: 
-ws-icon-8 = 9: 
-ws-icon-9 = 10: 
+ws-icon-0 = 1: 
+ws-icon-1 = 2:  
+ws-icon-2 = 3: 
+ws-icon-3 = 4: 
+ws-icon-4 = 5: 
+ws-icon-5 = 6: 
+ws-icon-6 = 7: 
+ws-icon-7 = 8: 
+ws-icon-8 = 9: 
+ws-icon-9 = 10: 
 ws-icon-default = 
 
 ; Only show workspaces on the same output as the bar
