@@ -8,29 +8,22 @@
 ;=====================================================
 
 [colors]
-background = #ee2f343f
-background-alt = #f72f343f
-foreground = #f3f4f5
-foreground-alt = #f3f4f5
-foreground-dim = #676e7d
-primary = #ffb52a
-secondary = #e60053
-alert = #ff6600
+background = #131313
+background-alt = #333
 
-high = #268bd2
-high-alt = #0c2b41
+foreground = #b2b2b2
+foreground-alt = #ee3333
 
-; other colors
-black = #000000
-red = #E06C75
-green = #98C379
-orange = #D19A66
-blue = #61AEEE
-magenta = #C678DD
-cyan = #56B6C2
-lightgray = #ABB2BF
-darkgray = #5C6370
-white = #FFFFFF
+border = #131313
+
+trans = #DA292b2e
+white = #eee
+grey = #444444
+pink = #d75f87
+blue = #4f97d7
+purple = #875faf
+green = #20ad80
+red = #ee3333
 
 [bar/main]
 monitor = eDP1
@@ -38,50 +31,46 @@ monitor-fallback = eDP1
 
 ;bottom = true
 width = 100%
-height = 18
+height = 15
 offset-x = 0
 offset-y = 0
-;radius = 6.0
-;fixed-center = false
+radius = 1.0
+fixed-center = true
 
 overline-size = 2
 overline-color = #f00
 underline-size = 2
-underline-color = ${colors.high}
+underline-color = ${colors.border}
 
-background = ${colors.background}
+background = ${colors.grey}
 foreground = ${colors.foreground}
 
-line-size = 3
-line-color = #f00
+;line-size = 3
+;line-color = #f00
 
-border-size = 4
-border-color = #00000000
+border-size = 2
+border-color = ${colors.background}
 
-padding-left = 0
-padding-right = 1
+;padding-left = 0
+;padding-right = 1
 
-module-margin-left = 0
-module-margin-right = 1
+;module-margin-left = 0
+;module-margin-right = 1
 
-;font-0 = fixed:pixelsize=10;1
-;font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-font-0 = Monaco:size=8:weight=bold
-font-1 = icons:pixelsize=10;0
-;font-1 = FontAwesome:size=10
-font-2 = WunconSiji:pixelsize=10;0
+;font-0 = Monaco:size=8:weight=bold
+font-0 = Hack:pixelsize=10:weight=bold;2
+font-1 = icons:pixelsize=10;2
+font-2 = Hack:pixelsize=32;2
+;font-2 = WunconSiji:pixelsize=10;0
 
-modules-left = i3 fsroot fshome fsvm cpu memory
-modules-center = xwindow
-modules-right = wlan eth xbacklight battery date
+modules-left = i3 arrow0 i3index arrow fsroot arrow0 fshome arrow fsvm arrow9 
+modules-center =
+modules-right = arrow6 wlan arrow7 cpu arrow6 memory arrow7 battery arrow6 xbacklight arrow7 date arrow6
 
 tray-position = right
-tray-padding = 2
+tray-padding = 4
 ;tray-transparent = true
-;tray-background = #0063ff
-
-;wm-restack = bspwm
-;wm-restack = i3
+tray-background = ${colors.background}
 
 ;override-redirect = true
 
@@ -91,12 +80,109 @@ tray-padding = 2
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
+;-------------------------------------------------------------------------------
+;	S E P A R A T O R S
+;-------------------------------------------------------------------------------
+[module/arrow]
+; green to trans
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.green}
+content-background = ${colors.trans}
+
+[module/arrow0]
+; background to green
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.background}
+content-background = ${colors.green}
+
+[module/arrow1]
+; grey to Blue
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.blue}
+content-background = ${colors.grey}
+
+[module/arrow2]
+; Blue to Purple
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.purple}
+content-background = ${colors.blue}
+
+[module/arrow3]
+; Purple to green
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.green}
+content-background = ${colors.purple}
+
+[module/arrow4]
+; red to green
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.green}
+content-background = ${colors.red
+
+[module/arrow5]
+; green to grey
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.grey}
+content-background = ${colors.green}
+
+[module/arrow6]
+; grey to bg
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.background}
+content-background = ${colors.grey}
+
+[module/arrow7]
+; bg to grey
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.grey}
+content-background = ${colors.background}
+
+[module/arrow8]
+; grey to bg
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.background}
+content-background = ${colors.trans}
+
+[module/arrow9]
+; background to grey
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.background}
+content-background = ${colors.grey}
+
+;-------------------------------------------------------------------------------
+;	M O D U L E S
+;-------------------------------------------------------------------------------
 [module/xbacklight]
 type = internal/xbacklight
 
 output = eDP1
 format = <label>
 label =  %percentage%%
+
+label-foreground = ${colors.white}
+label-background = ${colors.background}
 
 ; Only applies if <ramp> is used
 ramp-0 = 🌕
@@ -144,68 +230,77 @@ format-mounted-foreground = ${self.format-mounted-underline}
 format-unmounted-foreground = ${self.format-unmounted-underline}
 
 [module/fsroot]
-inherit = module/theme
+;inherit = module/theme
 type = internal/fs
 interval = 20
 mount-0 = /
+label-mounted-background = ${colors.background}
+label-mounted-foreground = ${colors.white}
+label-unmounted-background = ${colors.background}
+label-unmounted-foreground = ${colors.white}
 label-mounted = " %free%"
 label-unmounted = " ??"
-format-mounted-underline = #39c639
-format-unmounted-underline = #39c639
 
 [module/fshome]
-inherit = module/theme
+;inherit = module/theme
 type = internal/fs
 interval = 20
 format-prefix = ""
 mount-0 = /home
+label-mounted-foreground = ${colors.white}
+label-mounted-background = ${colors.green}
+label-unmounted-foreground = ${colors.white}
+label-unmounted-background = ${colors.green}
+content-background = ${colors.green}
 label-mounted = " %free%"
 label-unmounted = " ??"
-format-mounted-underline = #39c639
-format-unmounted-underline = #39c639
 
 [module/fsvm]
-inherit = module/theme
+;inherit = module/theme
 type = internal/fs
 interval = 20
 format-prefix = ""
 mount-0 = /home/alessandro/VM
 label-mounted = " %free%"
 label-unmounted = " ??"
-format-mounted-underline = #39c639
-format-unmounted-underline = #39c639
+label-mounted-foreground = ${colors.white}
+label-mounted-background = ${colors.background}
+label-unmounted-foreground = ${colors.white}
+label-unmounted-background = ${colors.background}
 
 [module/battery]
 type = internal/battery
-full-at = 95
 battery = BAT0
-adapter = AC0
-poll-interval = 5
-time-format = %H:%M
-format-underline = #55aa55
-label-charging = %percentage%%
-label-discharging = %percentage%%
-label-full =  %percentage%
+adapter = AC
+full-at = 98
+
 format-charging = <animation-charging> <label-charging>
-format-charging-foreground = ${colors.foreground-alt}
+format-charging-foreground = ${colors.green}
+format-charging-background = ${colors.grey}
 format-discharging = <ramp-capacity> <label-discharging>
-format-discharging-foreground = ${colors.orange}
+format-discharging-foreground = ${colors.green}
+format-discharging-background = ${colors.grey}
+format-full = <label-full>
 format-full-foreground = ${colors.green}
-format-charging-prefix = " "
-format-discharging-prefix = " "
-format-full-prefix = " "
+format-full-background = ${colors.grey}
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-3 = 
-ramp-capacity-4 = 
+label-charging = "CHR %percentage%%"
+label-discharging = "BAT %percentage%%"
+label-discharging-foreground = ${colors.green}
+label-full = "BAT %percentage%%"
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-3 = 
-animation-charging-4 = 
+ramp-capacity-0 =
+ramp-capacity-0-foreground = ${colors.red}
+ramp-capacity-1 =
+ramp-capacity-1-foreground = ${colors.red}
+ramp-capacity-2 =
+ramp-capacity-3 =
+ramp-capacity-4 =
+animation-charging-0 =
+animation-charging-1 =
+animation-charging-2 =
+animation-charging-3 =
+animation-charging-4 = 
 animation-charging-framerate = 750
 
 [module/date]
@@ -214,34 +309,35 @@ interval = 1
 
 date =  %a %d-%m-%Y 
 
-time =  %H:%M
+time = %H:%M
 
 format-prefix = 
 format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #0a6cf5
+label-foreground = ${colors.white}
+label-background = ${colors.grey}
 
 label = %date% %time%
 
 [module/wlan]
-inherit = module/theme
+;inherit = module/theme
 type = internal/network
 interface = wlp2s0
 interval = 1
-;format-connected-underline = #268bd2
-;format-connected = <ramp-signal> <label-connected>
+label-background = ${colors.background}
 format-connected = <label-connected>
-;label-connected-foreground = ${colors.high}
+label-connected-foreground = ${colors.white}
+label-connected-background = ${colors.background}
 
-;format-connected-underline = #0a6cf5
-;label-connected =  %signal%
-;label-connected =   %downspeed% |  %upspeed% 
-label-connected = " %essid% [ %downspeed%] [ %upspeed%]"
+;label-connected = "  %signal%"
+;label-connected = "   %downspeed% |  %upspeed%"
+;label-connected = "  %essid% [ %downspeed%] [ %upspeed%]"
+label-connected = "  %essid%"
 
 format-disconnected = 
 ;format-disconnected = <label-disconnected>
-;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.red}
+label-disconnected-background = ${colors.background}
 
 ramp-signal-0 = 
 ramp-signal-1 = 
@@ -267,25 +363,24 @@ format-disconnected =
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/cpu]
-inherit = module/theme
-format-underline = #999999
 type = internal/cpu
 interval = 2
-format-prefix = " "
-;format-underline = #f90000
+format-prefix = " CPU "
+format-prefix-foreground = ${colors.purple}
+format-prefix-background = ${colors.grey}
 label = %percentage%%
+label-foreground = ${colors.purple}
+label-background = ${colors.grey}
 
 [module/memory]
-inherit = module/theme
-format-underline = #999999
 type = internal/memory
 interval = 2
-format-prefix = " "
-;format-underline = #4bffdc
-;label = %percentage%%
-label = %gb_used%
-;label-foreground = #ed5456
-label-foreground = #999999
+format-prefix = " RAM "
+format-prefix-foreground = ${colors.pink}
+format-prefix-background = ${colors.background}
+label = %percentage_used%%
+label-foreground = ${colors.pink}
+label-background = ${colors.background}
 
 ;bar-used-width = 10
 bar-used-gradient = true
@@ -315,49 +410,49 @@ label-muted =  muted
 label-muted-foreground = ${colors.red}
 label-muted-font = 1
 
+[module/i3index]
+type = internal/i3
+format = <label-state>
+
+label-focused = "%name% "
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.green}
+
+label-unfocused =
+label-urgent =
+
 [module/i3]
 type = internal/i3
-format = <label-state> <label-mode>
-name-sort = true
-strip-wsnumbers = true  ;This will split the workspace name on ':'
-ws-icon-0 = 1: 
-ws-icon-1 = 2:  
-ws-icon-2 = 3: 
-ws-icon-3 = 4: 
-ws-icon-4 = 5: 
-ws-icon-5 = 6: 
-ws-icon-6 = 7: 
-ws-icon-7 = 8: 
-ws-icon-8 = 9: 
-ws-icon-9 = 10: 
-ws-icon-default = 
+format = <label-state><label-mode>
+
+index-sort = true
+enable-click = true
+enable-scroll = false
+
+ws-icon-0 = 0;*
+ws-icon-default = ○
 
 ; Only show workspaces on the same output as the bar
-;pin-workspaces = true
-label-mode-padding = 2
-label-mode-foreground = #000
-label-mode-background = ${colors.primary}
+pin-workspaces = true
+
+label-mode = " %mode% "
+label-mode-foreground = ${colors.green}
+label-mode-background = ${colors.background}
 
 ; focused = Active workspace on focused monitor
-label-focused = %name%
-label-focused-background = ${module/bspwm.label-focused-background}
-label-focused-underline = ${module/bspwm.label-focused-underline}
-label-focused-padding = ${module/bspwm.label-focused-padding}
+label-focused = " ● "
+label-focused-foreground = ${colors.green}
+label-focused-background = ${colors.background}
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %name%
-label-unfocused-padding = ${module/bspwm.label-occupied-padding}
-
-; visible = Active workspace on unfocused monitor
-label-visible = %name%
-label-visible-background = ${self.label-focused-background}
-label-visible-underline = ${self.label-focused-underline}
-label-visible-padding = ${self.label-focused-padding}
+label-unfocused = " %icon% "
+label-unfocused-foreground = ${colors.foreground}
+label-unfocused-background = ${colors.background}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %name%
-label-urgent-background = ${module/bspwm.label-urgent-background}
-label-urgent-padding = ${module/bspwm.label-urgent-padding}
+label-urgent = " ● "
+label-urgent-foreground = ${colors.red}
+label-urgent-background = ${colors.background}
 
 [module/bspwm]
 type = internal/bspwm
@@ -388,29 +483,6 @@ screenchange-reload = true
 [global/wm]
 margin-top = 5
 margin-bottom = 5
-
-; unused
-[module/mpd]
-type = internal/mpd
-format-online = <icon-prev> <toggle> <icon-next> <icon-random>  <icon-repeat> <label-time> 
-format-offline = <label-offline>
-label-offline =  no music
-
-icon-prev = 
-icon-stop = o
-icon-play = 
-icon-pause = 
-icon-next = 
-icon-seekf = >>
-icon-random = 
-icon-repeat = 
-
-;label-song = 𝄞 %artist% - %title%
-label-song-maxlen = 25
-label-song-ellipsis = true
-
-toggle-on-foreground = #e60053
-toggle-off-foreground = #66
 
 [module/temperature]
 type = internal/temperature
