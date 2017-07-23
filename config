@@ -6,22 +6,22 @@ set $out1 eDP1
 set $out2 DP1 #HDMI1
 
 # Workspace
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10: "
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 0
 
 # Colors
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
+set $darkgreen   #105640
+set $green       #20ad80
 set_from_resource $darkyellow  color3  #000000
 set_from_resource $yellow      color11 #000000
 set_from_resource $darkblue    color4  #000000
@@ -56,7 +56,7 @@ set $terminal termite
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Monospace 12
+font pango:Hack bold 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -323,7 +323,7 @@ client.unfocused        $black      $black      $m2         $darkblack  $darkbla
 client.focused_inactive $black      $black      $m1         $darkblack  $darkblack
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $black
-
+client.focused		$green      $green      $black	    $darkgreen  $green
 
 # Startup programs
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
@@ -341,8 +341,8 @@ exec --no-startup-id megasync
 # Miscellaneous
 # i3-gaps
 # for_window [class="^.*"] border pixel 0
-#gaps inner 4
-#gaps outer -4
+#gaps inner 10
+#gaps outer 3
 #smart_gaps on
 #smart_borders on
 #set $borderwidth 1
