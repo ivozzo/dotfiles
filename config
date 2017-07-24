@@ -340,12 +340,12 @@ exec --no-startup-id megasync
 
 # Miscellaneous
 # i3-gaps
-# for_window [class="^.*"] border pixel 0
-#gaps inner 10
-#gaps outer 3
-#smart_gaps on
-#smart_borders on
-#set $borderwidth 1
+for_window [class="^.*"] border pixel 1
+gaps inner 10
+gaps outer 3
+smart_gaps on
+smart_borders on
+set $borderwidth 1
 
 # Teamviewer
 #for_window [instance="TeamViewer.exe"] floating enable
