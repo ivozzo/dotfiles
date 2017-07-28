@@ -63,7 +63,7 @@ font-1 = icons:pixelsize=10;2
 font-2 = Hack:pixelsize=32;2
 ;font-2 = WunconSiji:pixelsize=10;0
 
-modules-left = i3 arrow0 i3index arrow fsroot arrow0 fshome arrow fsvm arrow9 
+modules-left = i3 arrow0 i3index arrow fsroot arrow10 fshome arrow11 fsvm arrow9 
 modules-center =
 modules-right = arrow6 wlan arrow7 cpu arrow6 memory arrow7 battery arrow6 xbacklight arrow7 date arrow6
 
@@ -73,9 +73,6 @@ tray-padding = 4
 tray-background = ${colors.background}
 
 ;override-redirect = true
-
-;scroll-up = bspwm-desknext
-;scroll-down = bspwm-deskprev
 
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
@@ -171,6 +168,22 @@ content-font = 2
 content-foreground = ${colors.background}
 content-background = ${colors.grey}
 
+[module/arrow10]
+; background to grey
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.background}
+content-background = ${colors.grey}
+
+[module/arrow11]
+; grey to background
+type = custom/text
+content = " "
+content-font = 2
+content-foreground = ${colors.grey}
+content-background = ${colors.background}
+
 ;-------------------------------------------------------------------------------
 ;	M O D U L E S
 ;-------------------------------------------------------------------------------
@@ -248,10 +261,10 @@ interval = 20
 format-prefix = ""
 mount-0 = /home
 label-mounted-foreground = ${colors.white}
-label-mounted-background = ${colors.green}
+label-mounted-background = ${colors.grey}
 label-unmounted-foreground = ${colors.white}
-label-unmounted-background = ${colors.green}
-content-background = ${colors.green}
+label-unmounted-background = ${colors.grey}
+content-background = ${colors.grey}
 label-mounted = " %free% "
 label-unmounted = " ?? "
 
@@ -455,25 +468,6 @@ label-urgent = " ● "
 label-urgent-foreground = ${colors.red}
 label-urgent-background = ${colors.background}
 
-[module/bspwm]
-type = internal/bspwm
-
-label-focused = %name%
-label-focused-background = ${colors.background-alt}
-label-focused-underline= ${colors.primary}
-label-focused-padding = 2
-
-label-occupied = %name%
-label-occupied-padding = 2
-
-label-urgent = %name%!
-label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
-
-label-empty = %name%
-label-empty-foreground = ${colors.foreground-alt}
-label-empty-padding = 2
-
 [settings]
 screenchange-reload = true
 ;compositing-background = xor
@@ -509,7 +503,6 @@ type = custom/menu
 
 format-spacing = 1
 format-underline = #0a6cf5
-
 
 label-open = 
 label-open-foreground = ${colors.secondary}
