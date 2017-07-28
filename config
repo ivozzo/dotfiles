@@ -238,8 +238,8 @@ label-mounted-background = ${colors.background}
 label-mounted-foreground = ${colors.white}
 label-unmounted-background = ${colors.background}
 label-unmounted-foreground = ${colors.white}
-label-mounted = " %free%"
-label-unmounted = " ??"
+label-mounted = " %free% "
+label-unmounted = " ?? "
 
 [module/fshome]
 ;inherit = module/theme
@@ -252,8 +252,8 @@ label-mounted-background = ${colors.green}
 label-unmounted-foreground = ${colors.white}
 label-unmounted-background = ${colors.green}
 content-background = ${colors.green}
-label-mounted = " %free%"
-label-unmounted = " ??"
+label-mounted = " %free% "
+label-unmounted = " ?? "
 
 [module/fsvm]
 ;inherit = module/theme
@@ -261,8 +261,8 @@ type = internal/fs
 interval = 20
 format-prefix = ""
 mount-0 = /home/alessandro/VM
-label-mounted = " %free%"
-label-unmounted = " ??"
+label-mounted = " %free% "
+label-unmounted = " ?? "
 label-mounted-foreground = ${colors.white}
 label-mounted-background = ${colors.background}
 label-unmounted-foreground = ${colors.white}
@@ -307,7 +307,7 @@ animation-charging-framerate = 750
 type = internal/date
 interval = 1
 
-date =  %a %d-%m-%Y 
+date = "  %a %d-%m-%Y "
 
 time = %H:%M
 
@@ -333,9 +333,10 @@ label-connected-background = ${colors.background}
 ;label-connected = "  %essid% [ %downspeed%] [ %upspeed%]"
 label-connected = "  %essid%"
 
-format-disconnected = 
-;format-disconnected = <label-disconnected>
+;format-disconnected = 
+format-disconnected = <label-disconnected>
 ;label-disconnected = %ifname% disconnected
+label-disconnected = "  disconnected "
 label-disconnected-foreground = ${colors.red}
 label-disconnected-background = ${colors.background}
 
