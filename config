@@ -100,12 +100,6 @@ assign [class="Vmplayer"] $ws4
 assign [instance="cheese|gimp"] $ws6
 
 # Floating windows
-
-#for_window [window_role="pop-up"] floating enable
-#for_window [window_role="bubble"] floating enable
-#for_window [window_role="task_dialog"] floating enable
-#for_window [window_role="Preferences"] floating enable
-
 for_window [window_role="task_dialog|bubble|page-info|Preferences|pop-up"] floating enable
 for_window [window_role="Open Files"] floating enable sticky
 for_window [window_role="File Operation Progress"] floating enable sticky
@@ -115,6 +109,7 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
+for_window [class="Wicd-client.py"] floating enable
 #for_window [class="VirtualBox"] floating enable
 
 # Sticky window
@@ -199,6 +194,12 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+# cycle through workspaces
+#bindsym $mod+Shift+Right workspace next
+#bindsym $mod+Shift+Left workspace prev
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
