@@ -332,7 +332,7 @@ exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
 exec_always --no-startup-id powertop --auto-tune
 #exec_always --no-startup-id autorandr --change
-exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/abstraction_watercolor_dark_spots_black_green_116160_3840x2160.jpg
+exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/archlinux_green.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id redshift-gtk ~/.config/redshift.conf 
 exec --no-startup-id owncloud
