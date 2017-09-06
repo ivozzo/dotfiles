@@ -87,16 +87,16 @@ workspace_auto_back_and_forth yes
 # Check class by : xprop
 assign [class="Google-chrome"] $ws2
 #assign [class="Termite"] $ws1
-assign [class="Thunar"] $ws7
+#assign [class="Thunar"] $ws7
 assign [class="VirtualBox"] $ws4
-assign [class="skyperforlinux"] $ws3
-assign [class="Franz"] $ws3
-assign [class="Code"] $ws5
+#assign [class="skype preview"] $ws3
+#assign [class="Franz"] $ws3
+#assign [class="Code"] $ws5
 assign [class="jetbrains-idea-ce"] $ws8
-assign [class="Spotify"] $ws6
-assign [class="Gitkraken"] $ws9
+#assign [class="Spotify"] $ws6
+#assign [class="Gitkraken"] $ws9
 assign [class="Vmplayer"] $ws4
-assign [class="org-srl-artes-albatros-albatros"] $ws10
+assign [class="org-srl-artes-albatros-albatros"] $ws9
 # Assign to certain workspace
 assign [instance="cheese|gimp"] $ws6
 
@@ -144,6 +144,7 @@ bindsym $mod+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id ~/.config/i3/bin/rofi_app_launcher
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/bin/rofi_switcher
 bindsym $mod+Shift+f exec ~/.config/i3/bin/rofi_finder
 
 # change focus
