@@ -72,12 +72,12 @@ font pango:DejaVu Sans Mono 8
 workspace $ws1 output $out1
 workspace $ws2 output $out1
 workspace $ws3 output $out1
-workspace $ws4 output $out2
-workspace $ws5 output $out2
+workspace $ws4 output $out1
+workspace $ws5 output $out1
 workspace $ws6 output $out1
 workspace $ws7 output $out1
 workspace $ws8 output $out1
-workspace $ws9 output $out1
+workspace $ws9 output $out2
 workspace $ws10 output $out2
 
 #Workspace back and forth (press mod + WS again for going into the parent workspace)
@@ -89,7 +89,7 @@ assign [class="Google-chrome"] $ws2
 #assign [class="Termite"] $ws1
 #assign [class="Thunar"] $ws7
 assign [class="VirtualBox"] $ws4
-#assign [class="skype preview"] $ws3
+#assign [class="skype"] $ws3
 #assign [class="Franz"] $ws3
 #assign [class="Code"] $ws5
 assign [class="jetbrains-idea-ce"] $ws8
@@ -110,7 +110,8 @@ for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
-for_window [class="Wicd-client.py"] floating enable
+#for_window [class="Franz"] floating enable
+#for_window [class="skype"] floating enable
 #for_window [class="VirtualBox"] floating enable
 
 # Sticky window
@@ -289,7 +290,7 @@ mode $power_mode {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot
     bindsym s	      mode "default" , exec i3lock -f -c 000000 && systemctl suspend
-    bindsym l         mode "default" , exec i3lock -f -c 000000
+    bindsym l         mode "default" , exec i3lock -f -c 000000 && xset dpms force off
     bindsym q         mode "default" , exec --no-startup-id i3-msg exit
     bindsym h         mode "default" , exec i3lock -f -c 000000 && systemctl hibernate 
    # bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
@@ -333,14 +334,16 @@ client.focused		$green      $green      $black	    $darkgreen  $green
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
-exec_always --no-startup-id powertop --auto-tune
+#exec_always --no-startup-id powertop --auto-tune
 #exec_always --no-startup-id autorandr --change
-exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/archlinux_green.jpg
+exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/minimalistic_arch_linux_wallpaper_by_malkowitch-dahpghs.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id redshift-gtk ~/.config/redshift.conf 
-exec --no-startup-id owncloud
-exec --no-startup-id megasync
+exec --no-startup-id nextcloud
+#exec --no-startup-id megasync
 #exec --no-startup-id wicd-client --tray
+exec --no-startup-id nm-applet
+exec --no-startup-id cbatticon -i standard
 
 # Miscellaneous
 # i3-gaps
