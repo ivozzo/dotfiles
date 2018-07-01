@@ -89,8 +89,8 @@ assign [class="Google-chrome"] $ws2
 #assign [class="Termite"] $ws1
 #assign [class="Thunar"] $ws7
 assign [class="VirtualBox"] $ws4
-#assign [class="skype"] $ws3
-#assign [class="Franz"] $ws3
+assign [class="skype"] $ws3
+assign [class="franz"] $ws3
 #assign [class="Code"] $ws5
 assign [class="jetbrains-idea-ce"] $ws8
 #assign [class="Spotify"] $ws6
@@ -343,7 +343,8 @@ exec --no-startup-id nextcloud
 #exec --no-startup-id megasync
 #exec --no-startup-id wicd-client --tray
 exec --no-startup-id nm-applet
-exec --no-startup-id cbatticon -i standard
+#exec --no-startup-id cbatticon -i standard
+exec --no-startup-id batterymon -t gnome
 
 # Miscellaneous
 # i3-gaps
