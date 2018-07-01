@@ -31,7 +31,7 @@ monitor-fallback = eDP1
 
 ;bottom = true
 width = 100%
-height = 15
+height = 20
 offset-x = 0
 offset-y = 0
 radius = 1.0
@@ -42,7 +42,7 @@ overline-color = #f00
 underline-size = 2
 underline-color = ${colors.border}
 
-background = ${colors.grey}
+background = ${colors.background}
 foreground = ${colors.foreground}
 
 ;line-size = 3
@@ -63,9 +63,9 @@ font-1 = icons:pixelsize=10;2
 font-2 = Hack:pixelsize=32;2
 ;font-2 = WunconSiji:pixelsize=10;0
 
-modules-left = i3 arrow0 i3index arrow fsroot arrow10 fshome arrow11 fsvm arrow9 
+modules-left = i3 arrow0 i3index arrow fsroot arrow10 fshome arrow11 cpu arrow10 memory arrow11
 modules-center =
-modules-right = arrow6 wlan arrow7 cpu arrow6 memory arrow7 battery arrow6 xbacklight arrow7 date arrow6
+modules-right = arrow7 date arrow6 xbacklight arrow7 battery arrow6
 
 tray-position = right
 tray-padding = 4
@@ -85,16 +85,16 @@ tray-background = ${colors.background}
 type = custom/text
 content = " "
 content-font = 2
-content-foreground = ${colors.green}
-content-background = ${colors.trans}
+content-foreground = ${colors.blue}
+content-background = ${colors.background}
 
 [module/arrow0]
-; background to green
+; background to blue
 type = custom/text
 content = " "
 content-font = 2
 content-foreground = ${colors.background}
-content-background = ${colors.green}
+content-background = ${colors.blue}
 
 [module/arrow1]
 ; grey to Blue
@@ -192,7 +192,7 @@ type = internal/xbacklight
 
 output = eDP1
 format = <label>
-label =  %percentage%%
+label =  BL: %percentage%%
 
 label-foreground = ${colors.white}
 label-background = ${colors.background}
@@ -251,8 +251,8 @@ label-mounted-background = ${colors.background}
 label-mounted-foreground = ${colors.white}
 label-unmounted-background = ${colors.background}
 label-unmounted-foreground = ${colors.white}
-label-mounted = " %free% "
-label-unmounted = " ?? "
+label-mounted = "/: %free% "
+label-unmounted = "/: ?? "
 
 [module/fshome]
 ;inherit = module/theme
@@ -265,21 +265,8 @@ label-mounted-background = ${colors.grey}
 label-unmounted-foreground = ${colors.white}
 label-unmounted-background = ${colors.grey}
 content-background = ${colors.grey}
-label-mounted = " %free% "
-label-unmounted = " ?? "
-
-[module/fsvm]
-;inherit = module/theme
-type = internal/fs
-interval = 20
-format-prefix = ""
-mount-0 = /home/alessandro/VM
-label-mounted = " %free% "
-label-unmounted = " ?? "
-label-mounted-foreground = ${colors.white}
-label-mounted-background = ${colors.background}
-label-unmounted-foreground = ${colors.white}
-label-unmounted-background = ${colors.background}
+label-mounted = "/home: %free% "
+label-unmounted = "/home: ?? "
 
 [module/battery]
 type = internal/battery
@@ -379,22 +366,22 @@ format-disconnected =
 [module/cpu]
 type = internal/cpu
 interval = 2
-format-prefix = " CPU "
+format-prefix = " CPU: "
 format-prefix-foreground = ${colors.purple}
-format-prefix-background = ${colors.grey}
-label = %percentage%%
+format-prefix-background = ${colors.background}
+label = "%percentage%% "
 label-foreground = ${colors.purple}
-label-background = ${colors.grey}
+label-background = ${colors.background}
 
 [module/memory]
 type = internal/memory
 interval = 2
-format-prefix = " RAM "
+format-prefix = " RAM: "
 format-prefix-foreground = ${colors.pink}
-format-prefix-background = ${colors.background}
-label = %percentage_used%%
+format-prefix-background = ${colors.grey}
+label = "%percentage_used%% "
 label-foreground = ${colors.pink}
-label-background = ${colors.background}
+label-background = ${colors.grey}
 
 ;bar-used-width = 10
 bar-used-gradient = true
@@ -430,7 +417,7 @@ format = <label-state>
 
 label-focused = "%name% "
 label-focused-foreground = ${colors.background}
-label-focused-background = ${colors.green}
+label-focused-background = ${colors.blue}
 
 label-unfocused =
 label-urgent =
@@ -450,12 +437,12 @@ ws-icon-default = ○
 pin-workspaces = true
 
 label-mode = " %mode% "
-label-mode-foreground = ${colors.green}
+label-mode-foreground = ${colors.blue}
 label-mode-background = ${colors.background}
 
 ; focused = Active workspace on focused monitor
 label-focused = " ● "
-label-focused-foreground = ${colors.green}
+label-focused-foreground = ${colors.blue}
 label-focused-background = ${colors.background}
 
 ; unfocused = Inactive workspace on any monitor
