@@ -339,7 +339,7 @@ exec --no-startup-id blueman-applet
 exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/minimalistic_arch_linux_wallpaper_by_malkowitch-dahpghs.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id redshift-gtk ~/.config/redshift.conf 
-exec --no-startup-id nextcloud
+exec --no-startup-id owncloud
 #exec --no-startup-id megasync
 #exec --no-startup-id wicd-client --tray
 exec --no-startup-id nm-applet
