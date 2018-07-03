@@ -1,6 +1,9 @@
 [global]
     font = Monospace 10
 
+    frame_width = 2
+    frame_color = "#000000"
+    
     # allow a small subset of html markup:
     # <b>bold</b>
     # <i>italic</i>
@@ -9,17 +12,19 @@
     #
     # for a complete reference see http://developer.gnome.org/pango/stable/PangoMarkupFormat.html
     # If markup is not allowed, those tags will be stripped out of the message.
-    allow_markup = yes
+    markup = full
 
-    # The format of the message. Possible variables are:
+    # The format of the message.  Possible variables are:
     #   %a  appname
     #   %s  summary
     #   %b  body
     #   %i  iconname (including its path)
     #   %I  iconname (without its path)
     #   %p  progress value if set ([  0%] to [100%]) or nothing
+    #   %n  progress value if set without any extra characters
+    #   %%  Literal %
     # Markup is allowed
-    format = "<b>%I %a:</b> %s\n%b"
+    format = "<b>%a</b>\n%s\n%b"
 
     # Sort messages by urgency
     sort = yes
@@ -29,7 +34,7 @@
 
     # alignment of message text.
     # Possible values are "left", "center" and "right"
-    alignment = center
+    alignment = left
 
     # The frequency with wich text that is longer than the notification
     # window allows bounces back and forth.
@@ -58,7 +63,7 @@
     # right side of the screen.  Y is measured from the top and down respectevly.
     # The width can be negative. In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "600x5-30+40"
+    geometry = "450x3-20+30"
 
     # The transparency of the window. range: [0; 100]
     # This option will only work if a compositing windowmanager is present (e.g. xcompmgr, compiz, etc..)
@@ -67,7 +72,7 @@
     # Don't remove messages, if the user is idle (no mouse or keyboard input)
     # for longer than idle_threshold seconds.
     # Set to 0 to disable.
-    idle_threshold = 120
+    idle_threshold = 60
 
     # Which monitor should the notifications be displayed on.
     monitor = 0
@@ -93,15 +98,15 @@
     # This adds empty space above and under the text.
     line_height = 0
 
-    # Draw a line of 'separatpr_height' pixel height between two notifications.
+    # Draw a line of 'separator_height' pixel height between two notifications.
     # Set to 0 to disable
-    separator_height = 2
+    separator_height = 10
 
     # padding between text and separator
     padding = 8
 
     # horizontal padding
-    horizontal_padding = 8
+    horizontal_padding = 4
 
     # Define a color for the separator.
     # possible values are:
@@ -114,7 +119,7 @@
     # print a notification on startup
     # This is mainly for error detection, since dbus (re-)starts dunst
     # automatically after a crash.
-    startup_notification = false
+    startup_notification = true
 
     # dmenu path
     dmenu = /usr/bin/dmenu -p dunst:
@@ -122,9 +127,11 @@
     # browser for opening urls in context menu
     browser = /usr/bin/google-chrome-stable -new-tab
 
-[frame]
-    width = 0
-    color = "#000000"
+    # Show icons in notifications.
+    icon_position = right
+ 
+    # Path to default icons.
+    icon_path = /usr/share/icons/gnome/32x32/status/:/usr/share/icons/gnome/32x32/devices/:/usr/share/icons/hicolor/32x32/apps/
 
 [shortcuts]
     # shortcuts are specified as [modifier+][modifier+]...key
@@ -133,27 +140,27 @@
     # xev might be helpful to find names for keys
 
     # close notification
-    close = mod4+m
+    #close = ctrl+m
 
     # close all notifications
-    close_all = mod4+shift+m
+    #close_all = mod4+shift+m
 
     # redisplay last message(s)
-    history = mod4+n
+    #history = mod4+n
 
     # context menu
-    context = mod4+shift+i
+    #context = mod4+shift+i
 
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the '#' and following  would be interpreted as a comment.
-    background = "#222222"
-    foreground = "#ff9900"
+    background = "#212020"
+    foreground = "#eae6e1"
     timeout = 10
 
 [urgency_normal]
-    background = "#285577"
-    foreground = "#ffffff"
+    background = "#565454"
+    foreground = "#eae6e1"
     timeout = 10
 
 [urgency_critical]
@@ -193,12 +200,14 @@
 #    summary = "foobar"
 #    format = ""
 
-[music]
-    appname = Spotify
-    summary = "Now playing"
-    urgency = low
+#[music]
+#    appname = Spotify
+#    summary = "Now playing"
+#    urgency = low
+#    format = "<b>Spotify</b>\b%s\%b"
 
 [electron]
     appname = Electron
-    urgency = low
-    format = "<b>Franz:</b> %s\n%b 
+    urgency = normal
+    format = "<b>Franz</b>\n%s\n%b"
+    new_icon = franz
