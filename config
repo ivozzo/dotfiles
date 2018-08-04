@@ -267,34 +267,29 @@ bindsym XF86AudioPrev  exec "mpc prev"
 bindsym XF86AudioPause exec "mpc pause"
 
 # Program shortcuts 
-set $mode_launcher Launcher
-bindsym $mod+o mode "$mode_launcher"
-
+set $mode_launcher Launcher: (V)irtualbox (S)potify (F)ranz S(k)ype (G)oogle-Chrome (C)ode
+bindsym $mod+o mode $mode_launcher
 mode "$mode_launcher" { 
-    bindsym t exec thunar , mode "default"
     bindsym v exec virtualbox , mode "default"
     bindsym s exec spotify , mode "default"
     bindsym f exec franz-bin , mode "default"
     bindsym k exec skyperforlinux , mode "default"
     bindsym g exec Google-chrome, mode "default"
     bindsym c exec code , mode "default"
-
     bindsym Esc mode "default"
     bindsym Return mode "default"
 }
 
 # Shutdown, Reboot, Lock Screen, and Logout 
-set $power_mode "power"
-bindsym $mod+Shift+q      mode $power_mode
-mode $power_mode {
+set $power_mode (P)ower off (R)eboot (S)uspend (H)ibernate (L)ock (Q)uit i3
+bindsym $mod+Shift+q mode $power_mode
+mode "$power_mode" {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot
     bindsym s	      mode "default" , exec i3lock -f -c 000000 && systemctl suspend
     bindsym l         mode "default" , exec i3lock -f -c 000000 && xset dpms force off
     bindsym q         mode "default" , exec --no-startup-id i3-msg exit
     bindsym h         mode "default" , exec i3lock -f -c 000000 && systemctl hibernate 
-   # bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
-
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
