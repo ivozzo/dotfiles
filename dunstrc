@@ -29,7 +29,7 @@
     # the top and down respectively.
     # The width can be negative.  In this case the actual width is the
     # screen width minus the width defined in within the geometry option.
-    geometry = "300x5-20+30"
+    geometry = "400x5-20+30"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -212,7 +212,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 1
+    corner_radius = 20
 
     ### Legacy
 
@@ -343,3 +343,8 @@
     urgency = normal
     format = "<b>Franz</b>\n%s\n%b"
     new_icon = franz
+
+[skype]
+    appname = skypeforlinux
+    urgency = normal
+    new_icon = skypeforlinux
