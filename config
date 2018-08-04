@@ -434,7 +434,7 @@ ws-icon-0 = 0;*
 ws-icon-default = ○
 
 ; Only show workspaces on the same output as the bar
-pin-workspaces = true
+pin-workspaces = false
 
 label-mode = " %mode% "
 label-mode-foreground = ${colors.blue}
