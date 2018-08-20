@@ -9,11 +9,11 @@
     dynamic_title = true
     urgent_on_bell = true
     clickable_url = true
-    font = Monospace 10
+    font = Hack 10
     scrollback_lines = 1000
     search_wrap = true
     #icon_name = terminal
-    geometry = 1200x700
+    geometry = 1400x700
 
     # "system", "on" or "off"
     cursor_blink = system
