@@ -3,25 +3,25 @@
 
 # Output 
 set $out1 eDP1
-set $out2 DP1 #HDMI1
+set $out2 HDMI1
 
 # Workspace
-set $ws1 "1: "
-set $ws2 "2: "
-set $ws3 "3: "
-set $ws4 "4: "
-set $ws5 "5: "
-set $ws6 "6: "
-set $ws7 "7: "
-set $ws8 "8: "
-set $ws9 "9: "
-set $ws10 "10: "
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws10 0
 
 # Colors
 set_from_resource $darkred     color1  #000000
 set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
+set $darkgreen   #105640
+set $green       #20ad80
 set_from_resource $darkyellow  color3  #000000
 set_from_resource $yellow      color11 #000000
 set_from_resource $darkblue    color4  #000000
@@ -56,7 +56,7 @@ set $terminal termite
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Monospace 10
+font pango:Hack bold 8
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -72,12 +72,12 @@ font pango:DejaVu Sans Mono 8
 workspace $ws1 output $out1
 workspace $ws2 output $out1
 workspace $ws3 output $out1
-workspace $ws4 output $out2
-workspace $ws5 output $out2
+workspace $ws4 output $out1
+workspace $ws5 output $out1
 workspace $ws6 output $out1
 workspace $ws7 output $out1
 workspace $ws8 output $out1
-workspace $ws9 output $out1
+workspace $ws9 output $out2
 workspace $ws10 output $out2
 
 #Workspace back and forth (press mod + WS again for going into the parent workspace)
@@ -86,33 +86,32 @@ workspace_auto_back_and_forth yes
 # Bind App to workspace
 # Check class by : xprop
 assign [class="Google-chrome"] $ws2
-assign [class="Termite"] $ws1
-assign [class="Thunar"] $ws7
+#assign [class="Termite"] $ws1
+#assign [class="Thunar"] $ws7
 assign [class="VirtualBox"] $ws4
-assign [class="skyperforlinux"] $ws3
-assign [class="Franz"] $ws3
-assign [class="Code"] $ws5
-assign [class="jetbrains-idea-ce"] $ws5
-assign [class="Pavucontrol"] $ws6
-assign [class="spotify"] $ws6
-assign [class="Gitkraken"] $ws5
+assign [class="skype"] $ws3
+assign [class="franz"] $ws3
+#assign [class="Code"] $ws5
+assign [class="jetbrains-idea-ce"] $ws8
+#assign [class="Spotify"] $ws6
+#assign [class="Gitkraken"] $ws9
+assign [class="Vmplayer"] $ws4
+assign [class="org-srl-artes-albatros-albatros"] $ws9
 # Assign to certain workspace
-assign [instance="cheese|gimp"] $ws6
+#assign [instance="cheese|gimp"] $ws6
 
 # Floating windows
-
-#for_window [window_role="pop-up"] floating enable
-#for_window [window_role="bubble"] floating enable
-#for_window [window_role="task_dialog"] floating enable
-#for_window [window_role="Preferences"] floating enable
-
 for_window [window_role="task_dialog|bubble|page-info|Preferences|pop-up"] floating enable
 for_window [window_role="Open Files"] floating enable sticky
 for_window [window_role="File Operation Progress"] floating enable sticky
-for_window [window_role="Save As"] floating enable
+for_window [window_role="Save As"] floating enable sticky
 #for_window [class="mtp-ng-qt" window_role="Open"] floating enable
 for_window [window_type="dialog"] floating enable
 for_window [window_type="menu"] floating enable
+for_window [class="Pavucontrol"] floating enable
+for_window [class="Blueman-manager"] floating enable
+#for_window [class="Franz"] floating enable
+#for_window [class="skype"] floating enable
 #for_window [class="VirtualBox"] floating enable
 
 # Sticky window
@@ -146,6 +145,7 @@ bindsym $mod+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id ~/.config/i3/bin/rofi_app_launcher
+bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/bin/rofi_switcher
 bindsym $mod+Shift+f exec ~/.config/i3/bin/rofi_finder
 
 # change focus
@@ -197,6 +197,12 @@ bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
 bindsym $mod+0 workspace $ws10
+
+# cycle through workspaces
+#bindsym $mod+Shift+Right workspace next
+#bindsym $mod+Shift+Left workspace prev
+bindsym $mod+Tab workspace next
+bindsym $mod+Shift+Tab workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -261,31 +267,29 @@ bindsym XF86AudioPrev  exec "mpc prev"
 bindsym XF86AudioPause exec "mpc pause"
 
 # Program shortcuts 
-set $mode_launcher Launcher
-bindsym $mod+o mode "$mode_launcher"
-
+set $mode_launcher Launcher: (V)irtualbox (S)potify (F)ranz S(k)ype (G)oogle-Chrome (C)ode
+bindsym $mod+o mode $mode_launcher
 mode "$mode_launcher" { 
-    bindsym t exec thunar , mode "default"
     bindsym v exec virtualbox , mode "default"
     bindsym s exec spotify , mode "default"
     bindsym f exec franz-bin , mode "default"
-
+    bindsym k exec skyperforlinux , mode "default"
+    bindsym g exec Google-chrome, mode "default"
+    bindsym c exec code , mode "default"
     bindsym Esc mode "default"
     bindsym Return mode "default"
 }
 
 # Shutdown, Reboot, Lock Screen, and Logout 
-set $power_mode "power"
-bindsym $mod+Shift+q      mode $power_mode
-mode $power_mode {
+set $power_mode (P)ower off (R)eboot (S)uspend (H)ibernate (L)ock (Q)uit i3
+bindsym $mod+Shift+q mode $power_mode
+mode "$power_mode" {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot
     bindsym s	      mode "default" , exec i3lock -f -c 000000 && systemctl suspend
-    bindsym l         mode "default" , exec i3lock -f -c 000000
+    bindsym l         mode "default" , exec i3lock -f -c 000000 && xset dpms force off
     bindsym q         mode "default" , exec --no-startup-id i3-msg exit
     bindsym h         mode "default" , exec i3lock -f -c 000000 && systemctl hibernate 
-   # bindsym s         exec sudo  /lib/systemd/systemd-sleep hybrid-sleep 
-
     bindsym Return    mode "default"
     bindsym Escape    mode "default"
 }
@@ -319,27 +323,32 @@ client.unfocused        $black      $black      $m2         $darkblack  $darkbla
 client.focused_inactive $black      $black      $m1         $darkblack  $darkblack
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $black
-
+client.focused		$green      $green      $black	    $darkgreen  $green
 
 # Startup programs
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
-exec_always --no-startup-id autorandr --change
-exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/milky_way_stars_night_sky_space_97654_1920x1080.jpg
+#exec_always --no-startup-id powertop --auto-tune
+#exec_always --no-startup-id autorandr --change
+exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/minimalistic_arch_linux_wallpaper_by_malkowitch-dahpghs.jpg
 exec_always --no-startup-id ~/.config/polybar/launch.sh
-exec --no-startup-id redshift
+exec --no-startup-id redshift-gtk ~/.config/redshift.conf 
 exec --no-startup-id owncloud
+#exec --no-startup-id megasync
 #exec --no-startup-id wicd-client --tray
+exec --no-startup-id nm-applet
+#exec --no-startup-id cbatticon -i standard
+exec --no-startup-id batterymon -t gnome
 
 # Miscellaneous
 # i3-gaps
-# for_window [class="^.*"] border pixel 0
-#gaps inner 4
-#gaps outer -4
-#smart_gaps on
-#smart_borders on
-#set $borderwidth 1
+for_window [class="^.*"] border pixel 1
+gaps inner 10
+gaps outer 3
+smart_gaps on
+smart_borders on
+set $borderwidth 1
 
 # Teamviewer
 #for_window [instance="TeamViewer.exe"] floating enable
