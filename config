@@ -329,14 +329,13 @@ client.focused		$green      $green      $black	    $darkgreen  $green
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
-#exec_always --no-startup-id powertop --auto-tune
 #exec_always --no-startup-id autorandr --change
-exec_always --no-startup-id feh --bg-scale ~/Immagini/Wallpaper/minimalistic_arch_linux_wallpaper_by_malkowitch-dahpghs.jpg
+exec_always --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/makepkg_not_war_by_galantyshow-d4g9n98.png
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id redshift-gtk ~/.config/redshift.conf 
 exec --no-startup-id owncloud
+exec --no-startup-id libinput-gestures-setup start
 #exec --no-startup-id megasync
-#exec --no-startup-id wicd-client --tray
 exec --no-startup-id nm-applet
 #exec --no-startup-id cbatticon -i standard
 exec --no-startup-id batterymon -t gnome
