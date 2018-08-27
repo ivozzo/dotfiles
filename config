@@ -260,10 +260,10 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5  # decrease screen brightne
 #bindsym XF86TouchpadToggle exec ~/.toggletouchpad.sh  # toggle touchpad
 
 # multimedia keys
-#bindsym XF86AudioPlay  exec "mpc toggle"
+bindsym XF86AudioPlay  exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.PlayPause"
 #bindsym XF86AudioStop  exec "mpc stop"
-#bindsym XF86AudioNext  exec "mpc next"
-#bindsym XF86AudioPrev  exec "mpc prev"
+bindsym XF86AudioNext  exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Next"
+bindsym XF86AudioPrev  exec "dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Previous"
 #bindsym XF86AudioPause exec "mpc pause"
 
 # Program shortcuts 
