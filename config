@@ -260,11 +260,11 @@ bindsym XF86MonBrightnessDown exec xbacklight -dec 5  # decrease screen brightne
 #bindsym XF86TouchpadToggle exec ~/.toggletouchpad.sh  # toggle touchpad
 
 # multimedia keys
-bindsym XF86AudioPlay  exec "mpc toggle"
-bindsym XF86AudioStop  exec "mpc stop"
-bindsym XF86AudioNext  exec "mpc next"
-bindsym XF86AudioPrev  exec "mpc prev"
-bindsym XF86AudioPause exec "mpc pause"
+#bindsym XF86AudioPlay  exec "mpc toggle"
+#bindsym XF86AudioStop  exec "mpc stop"
+#bindsym XF86AudioNext  exec "mpc next"
+#bindsym XF86AudioPrev  exec "mpc prev"
+#bindsym XF86AudioPause exec "mpc pause"
 
 # Program shortcuts 
 set $mode_launcher Launcher: (V)irtualbox (S)potify (F)ranz S(k)ype (G)oogle-Chrome (C)ode
@@ -330,12 +330,12 @@ exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 exec --no-startup-id pasystray
 exec --no-startup-id blueman-applet
 #exec_always --no-startup-id autorandr --change
-exec_always --no-startup-id feh --bg-scale ~/.config/i3/wallpaper/makepkg_not_war_by_galantyshow-d4g9n98.png
+exec_always --no-startup-id feh --bg-scale ~/Documenti/Mega/Wallpaper/makepkg_not_war_by_galantyshow-d4g9n98.png
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id redshift-gtk ~/.config/redshift.conf 
 exec --no-startup-id owncloud
 exec --no-startup-id libinput-gestures-setup start
-#exec --no-startup-id megasync
+exec --no-startup-id megasync
 exec --no-startup-id nm-applet
 #exec --no-startup-id cbatticon -i standard
 exec --no-startup-id batterymon -t gnome
