@@ -24,12 +24,12 @@ set $darkgreen   #105640
 set $green       #20ad80
 set_from_resource $darkyellow  color3  #000000
 set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
+set $darkblue    #2e71ad
+set $blue	 #4f97d7
 set_from_resource $darkmagenta color5  #000000
 set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
+set $darkcyan    #00cccc
+set $cyan	 #00ffff
 set_from_resource $darkwhite   color7  #000000
 set_from_resource $white       color15 #000000
 
@@ -323,7 +323,7 @@ client.unfocused        $black      $black      $m2         $darkblack  $darkbla
 client.focused_inactive $black      $black      $m1         $darkblack  $darkblack
 client.urgent           $darkred    $darkred    $black      $darkred    $darkred
 client.background       $black
-client.focused		$green      $green      $black	    $darkgreen  $green
+client.focused		$blue       $blue       $black	    $darkblue  $darkblue
 
 # Startup programs
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
@@ -342,7 +342,7 @@ exec --no-startup-id batterymon -t gnome
 
 # Miscellaneous
 # i3-gaps
-for_window [class="^.*"] border pixel 1
+for_window [class="^.*"] border pixel 3
 gaps inner 10
 gaps outer 3
 smart_gaps on
