@@ -29,12 +29,12 @@ red = #ee3333
 monitor = eDP1
 monitor-fallback = eDP1
 
-;bottom = true
+bottom = true
 width = 100%
 height = 20
 offset-x = 0
 offset-y = 0
-radius = 1.0
+radius = 3.0
 fixed-center = true
 
 overline-size = 2
