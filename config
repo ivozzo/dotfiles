@@ -85,19 +85,18 @@ workspace_auto_back_and_forth yes
 
 # Bind App to workspace
 # Check class by : xprop
-assign [class="Google-chrome"] $ws2
+#assign [class="Google-chrome"] $ws2
 #assign [class="Termite"] $ws1
 #assign [class="Thunar"] $ws7
-assign [class="VirtualBox"] $ws4
-assign [class="skype"] $ws3
-assign [class="franz"] $ws3
+#assign [class="VirtualBox"] $ws4
+#assign [class="skype"] $ws3
+#assign [class="franz"] $ws3
 #assign [class="Code"] $ws5
-assign [class="jetbrains-idea-ce"] $ws8
+#assign [class="jetbrains-idea-ce"] $ws8
 #assign [class="Spotify"] $ws6
 #assign [class="Gitkraken"] $ws9
-assign [class="Vmplayer"] $ws4
-assign [class="org-srl-artes-albatros-albatros"] $ws9
-# Assign to certain workspace
+#assign [class="Vmplayer"] $ws4
+#assign [class="org-srl-artes-albatros-albatros"] $ws9
 #assign [instance="cheese|gimp"] $ws6
 
 # Floating windows
@@ -328,17 +327,15 @@ client.focused		$blue       $blue       $black	    $darkblue  $darkblue
 # Startup programs
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 exec --no-startup-id pasystray
-exec --no-startup-id blueman-applet
-#exec_always --no-startup-id autorandr --change
 exec_always --no-startup-id feh --bg-scale ~/Documenti/Mega/Wallpaper/makepkg_not_war_by_galantyshow-d4g9n98.png
-exec_always --no-startup-id ~/.config/polybar/launch.sh
 exec --no-startup-id redshift-gtk ~/.config/redshift.conf 
 exec --no-startup-id owncloud
 exec --no-startup-id libinput-gestures-setup start
 exec --no-startup-id megasync
-exec --no-startup-id nm-applet
-#exec --no-startup-id cbatticon -i standard
 exec --no-startup-id batterymon -t gnome
+exec --no-startup-id nm-applet
+exec --no-startup-id blueman-applet
+exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # Miscellaneous
 # i3-gaps
