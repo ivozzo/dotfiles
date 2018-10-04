@@ -341,8 +341,7 @@
 [electron]
     appname = Electron
     urgency = normal
-    format = "<b>Franz</b>\n%s\n%b"
-    new_icon = franz
+    format = "<b>Rambox</b>\n%s\n%b"
 
 [skype]
     appname = skypeforlinux
