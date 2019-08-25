@@ -116,7 +116,7 @@ font-2 = Hack:pixelsize=24;2
 ;font-2 = WunconSiji:pixelsize=10;0
 
 modules-left = i3 arrow0 i3index arrow fsroot arrow10 fshome arrow11 cpu arrow10 memory arrow11                                     
-modules-center =
+modules-center = title
 modules-right = arrow7 date arrow6 xbacklight arrow7 battery arrow6  <Paste>
 
 tray-position = right
@@ -539,6 +539,25 @@ label-unfocused-background = ${colors.background}
 label-urgent = " ● "
 label-urgent-foreground = ${colors.red}
 label-urgent-background = ${colors.background}
+
+[module/title]
+type = internal/xwindow
+
+; Available tags:
+format = <label>
+format-background = ${colors.background}
+format-foreground = ${colors.foreground}
+format-padding = 4
+
+; Default: %title%
+label = %title%
+label-maxlen = 50
+
+; Used instead of label when there is no window title
+; Available tokens:
+;   None
+label-empty = Empty
+label-empty-foreground = #707880
 
 [settings]
 screenchange-reload = true
