@@ -3,7 +3,20 @@
 
 # Output 
 set $out1 eDP-1
-set $out2 DP1
+#set $out2 DP1
+set $out2 HDMI1
+
+# Configure border style <normal|1pixel|pixel xx|none|pixel>
+new_window none
+new_float normal
+
+# Hide borders
+hide_edge_borders none
+
+# change borders
+bindsym $mod+u border none
+bindsym $mod+y border pixel 1
+bindsym $mod+n border normal
 
 # Workspace
 set $ws1 1
@@ -15,38 +28,13 @@ set $ws6 6
 set $ws7 7
 set $ws8 8
 set $ws9 9
-set $ws10 0
-
-# Colors
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set $darkgreen   #105640
-set $green       #20ad80
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set $darkblue    #2e71ad
-set $blue	 #4f97d7
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set $darkcyan    #00cccc
-set $cyan	 #00ffff
-set_from_resource $darkwhite   color7  #000000
-set_from_resource $white       color15 #000000
-
-set $m1 #808080 
-set $m2 #FFF0E0
-
-# Use custom colors for black
-set $black       #282828
-set $darkblack   #1d2021
-set $transparent #00000000
 
 # Mod keys
 set $mod Mod4
 set $mod1 Mod1
 
 # Terminal
-set $terminal termite
+set $terminal urxvt
 
 #/VARIABLES
 ###########
@@ -56,7 +44,8 @@ set $terminal termite
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Hack bold 8
+#font pango:Hack bold 8
+font xft:URWGothic-Book 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -78,10 +67,11 @@ workspace $ws6 output $out1
 workspace $ws7 output $out1
 workspace $ws8 output $out1
 workspace $ws9 output $out2
-workspace $ws10 output $out2
 
 #Workspace back and forth (press mod + WS again for going into the parent workspace)
 workspace_auto_back_and_forth yes
+bindsym $mod+b workspace back_and_forth
+bindsym $mod+Shift+b move container to workspace back_and_forth; workspace back_and_forth
 
 # Bind App to workspace
 # Check class by : xprop
@@ -141,38 +131,42 @@ bindsym $mod+Return exec $terminal
 bindsym $mod+p exec ~/.config/i3/bin/logout
 
 # kill focused window
-bindsym $mod+q kill
+bindsym $mod+Shift+q kill
 
 # start rofi (a program launcher)
 bindsym $mod+d exec --no-startup-id ~/.config/i3/bin/rofi_app_launcher
-bindsym $mod+Shift+s exec --no-startup-id ~/.config/i3/bin/rofi_switcher
-bindsym $mod+Shift+f exec ~/.config/i3/bin/rofi_finder
+bindsym $mod1+Tab exec --no-startup-id ~/.config/i3/bin/rofi_switcher
+#bindsym $mod1+f exec --no-startup-id ~/.config/i3/bin/rofi_finder
 
 # change focus
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
 
 # move focused windows
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
 
 # enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen toggle
+#bindsym $mod+f fullscreen toggle
+
+# Search
+bindsym $mod+f exec --no-startup-id echo "" | rofi -dmenu -p "Search" -l 0 | xargs -I{} google-chrome-stable --app=https://www.google.it/search?q={}
+
+# URL
+bindsym $mod+Shift+f exec --no-startup-id echo "" | rofi -dmenu -p "URL" -l 0 | xargs -I{} google-chrome-stable --app=https://{}
 
 # change container layout (stacked, tabbed, toggle split)
 bindsym $mod+s layout stacking
-bindsym $mod+t layout tabbed
+bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
 
-# split in horizontal orientation
-bindsym $mod+h split h
-
-# split in vertical orientation
-bindsym $mod+v split v
+bindsym $mod+minus split h;exec notify-send 'tile horizontally'
+bindsym $mod+bar split v;exec notify-send 'tile vertically'
+bindsym $mod+q split toggle
 
 # toggle tiling / floating
 bindsym $mod+Shift+space floating toggle
@@ -180,11 +174,21 @@ bindsym $mod+Shift+space floating toggle
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
 
+# toggle sticky
+bindsym $mod+Shift+s sticky toggle
+
 # focus the parent container
 bindsym $mod+a focus parent
 
 # focus the child container
 # bindsym $mod+d focus child
+
+# move the currently focused window to the scratchpad
+bindsym $mod+Shift+minus move scratchpad
+
+# Show the next scratchpad window or hide the focused scratchpad window.
+# If there are multiple scratchpad windows, this command cycles through them.
+bindsym $mod+Ctrl+minus scratchpad show
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -196,13 +200,10 @@ bindsym $mod+6 workspace $ws6
 bindsym $mod+7 workspace $ws7
 bindsym $mod+8 workspace $ws8
 bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
 
 # cycle through workspaces
-#bindsym $mod+Shift+Right workspace next
-#bindsym $mod+Shift+Left workspace prev
-bindsym $mod+Tab workspace next
-bindsym $mod+Shift+Tab workspace prev
+bindsym $mod+Ctrl+Right workspace next
+bindsym $mod+Ctrl+Left workspace prev
 
 # move focused container to workspace
 bindsym $mod+Shift+1 move container to workspace $ws1
@@ -214,7 +215,20 @@ bindsym $mod+Shift+6 move container to workspace $ws6
 bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
+
+# Move to workspace with focused container
+bindsym $mod+Ctrl+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws8; workspace $ws8
+
+# switch to workspace with urgent window automatically
+for_window [urgent=latest] focus
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -233,9 +247,14 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 5 px or 5 ppt
+        bindsym k resize grow height 5 px or 5 ppt
+        bindsym j resize shrink height 5 px or 5 ppt
+        bindsym l resize grow width 5 px or 5 ppt
+
         bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Up resize grow height 10 px or 10 ppt
-        bindsym Down resize shrink height 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
         bindsym Right resize grow width 10 px or 10 ppt
 
         # back to normal: Enter or Escape
@@ -245,7 +264,7 @@ mode "resize" {
 bindsym $mod+r mode "resize"
 
 # Lock screen
-bindsym $mod+l exec dm-tool lock
+bindsym $mod+x exec dm-tool lock
 
 # Pulse Audio controls
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume $(pacmd list-sinks |awk '/* index:/{print $3}') +5% # Raise
@@ -282,7 +301,7 @@ mode "$mode_launcher" {
 
 # Shutdown, Reboot, Lock Screen, and Logout 
 set $power_mode (P)ower off (R)eboot (S)uspend (H)ibernate (L)ock (Q)uit i3
-bindsym $mod+Shift+q mode $power_mode
+bindsym $mod+Shift+0 mode $power_mode
 mode "$power_mode" {
     bindsym p         exec systemctl poweroff
     bindsym r         exec systemctl reboot
@@ -294,15 +313,50 @@ mode "$power_mode" {
     bindsym Escape    mode "default"
 }
 
+# Color palette used for the terminal ( ~/.Xresources file )
+# Colors are gathered based on the documentation:
+# https://i3wm.org/docs/userguide.html#xresources
+# Change the variable name at the place you want to match the color
+# of your terminal like this:
+# [example]
+# If you want your bar to have the same background color as your 
+# terminal background change the line 362 from:
+# background #14191D
+# to:
+# background $term_background
+# Same logic applied to everything else.
+set_from_resource $term_background background
+set_from_resource $term_foreground foreground
+set_from_resource $term_color0     color0
+set_from_resource $term_color1     color1
+set_from_resource $term_color2     color2
+set_from_resource $term_color3     color3
+set_from_resource $term_color4     color4
+set_from_resource $term_color5     color5
+set_from_resource $term_color6     color6
+set_from_resource $term_color7     color7
+set_from_resource $term_color8     color8
+set_from_resource $term_color9     color9
+set_from_resource $term_color10    color10
+set_from_resource $term_color11    color11
+set_from_resource $term_color12    color12
+set_from_resource $term_color13    color13
+set_from_resource $term_color14    color14
+set_from_resource $term_color15    color15
+
 # Change autorandr profile
-bindsym $mod+x exec --no-startup-id "autorandr --change"
+#bindsym $mod+x exec --no-startup-id "autorandr --change"
 
 # Rename workspace with i3-input using numbers and text
-bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
+#bindsym $mod+n exec i3-input -F 'rename workspace to "%s"' -P 'New name for this workspace: '
 
 # screenshot
-bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/ownCloud/Screenshot/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
-bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/ownCloud/Screenshot/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+#bindsym --release Print exec --no-startup-id "maim -p 0 -c 0.96,0.5,0.09 $HOME/ownCloud/Screenshot/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
+#bindsym --release Shift+Print exec --no-startup-id "maim -s -p 0 -c 0.96,0.5,0.09 $HOME/ownCloud/Screenshot/screenshot-$(date +%Y-%m-%d_%H-%M-%S).png"
 
 #/CUSTOM BIND KEYS
 ##################
@@ -318,18 +372,19 @@ mouse_warping none
 focus_follows_mouse no
 
                         #BORDER    BACKGROUND   TEXT         INDICATOR   CHILD_BORDER
+  client.focused          #556064 #556064 #80FFF9 #FDF6E3
+  client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
+  client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
+  client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
+  client.placeholder      #000000 #0c0c0c #ffffff #000000 
 
-client.unfocused        $black      $black      $m2         $darkblack  $darkblack
-client.focused_inactive $black      $black      $m1         $darkblack  $darkblack
-client.urgent           $darkred    $darkred    $black      $darkred    $darkred
-client.background       $black
-client.focused		$blue       $blue       $black	    $darkblue  $darkblue
+  client.background       #2B2C2B
 
 # Startup programs
 exec_always setxkbmap -layout it 
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
 exec --no-startup-id pasystray
-exec_always --no-startup-id feh --bg-scale ~/MEGA/Images/Wallpaper/R4ct6De-arch-linux-wallpaper.png
+exec_always --no-startup-id feh --bg-scale ~/MEGA/Images/Wallpaper/lucas-benjamin-wQLAGv4_OYs-unsplash.jpg
 exec --no-startup-id redshift-gtk ~/.config/redshift/redshift.conf 
 exec --no-startup-id owncloud
 exec --no-startup-id libinput-gestures-setup start
@@ -338,37 +393,65 @@ exec --no-startup-id megasync
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec_always --no-startup-id ~/.config/polybar/launch.sh
+exec_always --no-startup-id sleep 2; compton --config ~/.config/compton/compton.conf -b
 
-# Miscellaneous
+# Compton management
+bindsym $mod+t exec --no-startup-id pkill compton
+bindsym $mod+Ctrl+t exec --no-startup-id compton --config ~/.config/compton/compton.conf -b
+
 # i3-gaps
-for_window [class="^.*"] border pixel 3
-gaps inner 10
-gaps outer 3
+# Set inner/outer gaps
+gaps inner 14
+gaps outer -2
+
+# Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
+# gaps inner|outer current|all set|plus|minus <px>
+# gaps inner all set 10
+# gaps outer all plus 5
+
+# Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
+
+# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
-set $borderwidth 1
 
-# Teamviewer
-#for_window [instance="TeamViewer.exe"] floating enable
-#for_window [class="TeamViewer"] floating enable
-#for_window [instance="Qt-subapplication" title="TeamViewer"] move scratchpad
+# Press $mod+Shift+g to enter the gap mode. Choose o or i for modifying outer/inner gaps. Press one of + / - (in-/decrement for current workspace) or 0 (remove gaps for current workspace). If you also press Shift with these keys, the change will be global for all workspaces.
+set $mode_gaps Gaps: (o) outer, (i) inner
+set $mode_gaps_outer Outer Gaps: +|-|0 (local), Shift + +|-|0 (global)
+set $mode_gaps_inner Inner Gaps: +|-|0 (local), Shift + +|-|0 (global)
+bindsym $mod+Shift+g mode "$mode_gaps"
 
-# i3blocks
+mode "$mode_gaps" {
+        bindsym o      mode "$mode_gaps_outer"
+        bindsym i      mode "$mode_gaps_inner"
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_inner" {
+        bindsym plus  gaps inner current plus 5
+        bindsym minus gaps inner current minus 5
+        bindsym 0     gaps inner current set 0
 
-#bar {
-#    status_command    python ~/.config/i3/i3pystatus.conf
-#    position          top
-#    workspace_buttons yes
-#    font pango:Hack, FontAwesome 10
-#    colors {
-#        background #253941
-#        statusline #e7dfd9
-#        separator  #081419
-#        focused_workspace  #2aa198 #073642 #eee895
-#        active_workspace   #073642 #859900 #839496
-#        inactive_workspace #002b36  #002b36   #586e75
-#        urgent_workspace   #cb4b16 #dc322f #fdf6e3
-#    }
-#  }
+        bindsym Shift+plus  gaps inner all plus 5
+        bindsym Shift+minus gaps inner all minus 5
+        bindsym Shift+0     gaps inner all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+mode "$mode_gaps_outer" {
+        bindsym plus  gaps outer current plus 5
+        bindsym minus gaps outer current minus 5
+        bindsym 0     gaps outer current set 0
+
+        bindsym Shift+plus  gaps outer all plus 5
+        bindsym Shift+minus gaps outer all minus 5
+        bindsym Shift+0     gaps outer all set 0
+
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+}
+
 #/MISCELLANEOUS
 ###############
