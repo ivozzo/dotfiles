@@ -65,7 +65,7 @@ workspace $ws4 output $out1
 workspace $ws5 output $out1
 workspace $ws6 output $out1
 workspace $ws7 output $out1
-workspace $ws8 output $out1
+workspace $ws8 output $out2
 workspace $ws9 output $out2
 
 #Workspace back and forth (press mod + WS again for going into the parent workspace)
@@ -100,9 +100,6 @@ for_window [window_type="menu"] floating enable
 for_window [class="Pavucontrol"] floating enable
 for_window [class="Blueman-manager"] floating enable
 for_window [class="Toggl Desktop"] floating enable
-#for_window [class="Franz"] floating enable
-#for_window [class="skype"] floating enable
-#for_window [class="VirtualBox"] floating enable
 
 # Sticky window
 for_window [instance="file_progress"]  sticky enable
