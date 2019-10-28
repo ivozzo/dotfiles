@@ -25,9 +25,9 @@ font-2 = FontAwesome:style=Regular:pixelsize=10
 font-3 = FontAwesome:style=Regular:pixelsize=10
 font-4 = FontAwesome:style=Regular:pixelsize=10
 
-modules-left = i3
-modules-center = date
-modules-right = battery wlan powermenu
+modules-left = powermenu i3
+modules-center = date 
+modules-right = battery 
 
 tray-position = right
 tray-padding = 4
