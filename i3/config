@@ -364,7 +364,7 @@ focus_follows_mouse no
 # Startup programs
 exec_always setxkbmap -layout it 
 exec --no-startup-id dunst -conf ~/.config/dunst/dunstrc
-exec --no-startup-id pasystray
+#exec --no-startup-id pasystray
 exec --no-startup-id compton --config ~/.config/compton/compton.conf -b --respect-prop-shadow
 exec_always --no-startup-id feh --bg-scale ~/MEGA/Images/Wallpaper/apple-wallpaper-4k-1.jpg
 exec --no-startup-id redshift-gtk ~/.config/redshift/redshift.conf 

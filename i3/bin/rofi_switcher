@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
 # Run rofi window switcher
-j4-dmenu-desktop --dmenu="rofi -modi "window" -theme slate -show window -i"
+j4-dmenu-desktop --dmenu="rofi -modi "window" -show-icons -theme slate -show window -i -display-window 'Switch:'"
 
 # Use ctrl+tab to switch

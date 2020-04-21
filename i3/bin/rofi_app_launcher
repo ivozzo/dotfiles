@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 # Run rofi app launcher
-j4-dmenu-desktop --dmenu="rofi -dmenu -theme slate -i -p 'apps'"
-
+#j4-dmenu-desktop --dmenu="rofi -dmenu -theme slate -show-icons -i -p 'apps'"
+j4-dmenu-desktop --dmenu="rofi -show drun -theme slate -show-icons -i -display-drun 'Apps:'"
 #rofi -modi "run,ssh" -show run
 
 # Use ctrl+tab to switch
