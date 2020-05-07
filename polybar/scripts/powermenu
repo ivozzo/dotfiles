@@ -1,0 +1,13 @@
+#!/bin/bash
+
+## Created By Aditya Shakya
+
+#MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 5 -xoffset -14 -yoffset -52 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 4 <<< " Lock| Logout| Reboot| Shutdown")"
+MENU="$(rofi -sep "|" -dmenu -i -p 'System' -location 3 -xoffset 0 -yoffset 30 -width 10 -hide-scrollbar -line-padding 4 -padding 20 -lines 5 <<< " Lock| Sleep| Logout| Reboot| Shutdown")"
+            case "$MENU" in
+                *Lock) dm-tool lock ;;
+                *Sleep) dm-tool lock && systemctl suspend ;;
+                *Logout) i3-msg exit;;
+                *Reboot) systemctl reboot ;;
+                *Shutdown) systemctl -i poweroff
+            esac
